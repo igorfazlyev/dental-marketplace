@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 	"strings"
 	"time"
@@ -10,11 +9,7 @@ import (
 
 func handleLogin(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "GET" {
-		err := templates.ExecuteTemplate(w, "login.html", nil)
-		if err != nil {
-			log.Printf("Template error: %v", err)
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
+		renderTemplate(w, "login", nil)
 		return
 	}
 
@@ -23,7 +18,7 @@ func handleLogin(w http.ResponseWriter, r *http.Request) {
 
 	user, err := db.GetUserByUsername(username)
 	if err != nil || user.Password != password {
-		templates.ExecuteTemplate(w, "login.html", map[string]interface{}{
+		renderTemplate(w, "login", map[string]interface{}{
 			"Error": "Неверные учетные данные",
 		})
 		return
@@ -70,11 +65,7 @@ func handlePatientDashboard(w http.ResponseWriter, r *http.Request) {
 		"Consultations": consultations,
 	}
 
-	err := templates.ExecuteTemplate(w, "patient_dashboard.html", data)
-	if err != nil {
-		log.Printf("Template error: %v", err)
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
+	renderTemplate(w, "patient_dashboard", data)
 }
 
 func handlePatientScans(w http.ResponseWriter, r *http.Request) {
@@ -86,11 +77,7 @@ func handlePatientScans(w http.ResponseWriter, r *http.Request) {
 		"Scans": scans,
 	}
 
-	err := templates.ExecuteTemplate(w, "scans.html", data)
-	if err != nil {
-		log.Printf("Template error: %v", err)
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
+	renderTemplate(w, "patient_scans", data)
 }
 
 func handleScanUpload(w http.ResponseWriter, r *http.Request) {
@@ -105,8 +92,21 @@ func handleScanUpload(w http.ResponseWriter, r *http.Request) {
 		ID:         fmt.Sprintf("scan-%d", time.Now().Unix()),
 		PatientID:  user.ID,
 		UploadDate: time.Now(),
-		Status:     "processing",
+		Status:     "analyzed",
 		ImagePath:  "/uploads/scan.dcm",
+		AIAnalysis: &AIAnalysis{
+			ScanID:    fmt.Sprintf("scan-%d", time.Now().Unix()),
+			Diagnoses: []string{"Требуется консультация врача", "Возможные проблемы обнаружены"},
+			TreatmentPlan: []TreatmentItem{
+				{
+					ID:          fmt.Sprintf("item-%d-1", time.Now().Unix()),
+					Description: "Зубной имплант",
+					ToothNumber: "3.6",
+					Category:    "implant",
+				},
+			},
+			CreatedAt: time.Now(),
+		},
 	}
 
 	db.CreateScan(scan)
@@ -128,49 +128,36 @@ func handleTreatmentPlan(w http.ResponseWriter, r *http.Request) {
 		"Scan": scan,
 	}
 
-	err = templates.ExecuteTemplate(w, "treatment_plan.html", data)
-	if err != nil {
-		log.Printf("Template error: %v", err)
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
+	renderTemplate(w, "patient_treatment_plan", data)
 }
 
-// func handleCriteria(w http.ResponseWriter, r *http.Request) {
-// 	user := r.Context().Value("user").(*User)
+func handleCriteria(w http.ResponseWriter, r *http.Request) {
+	user := r.Context().Value("user").(*User)
 
-// 	if r.Method == "POST" {
-// 		// Process the form submission
-// 		scanID := r.URL.Query().Get("scan")
+	if r.Method == "POST" {
+		scanID := r.URL.Query().Get("scan")
 
-// 		if scanID != "" {
-// 			// Update scan status to show offers are being requested
-// 			scan, err := db.GetScanByID(scanID)
-// 			if err == nil {
-// 				scan.Status = "offers_received"
-// 				db.UpdateScan(scan)
-// 			}
+		if scanID != "" {
+			scan, err := db.GetScanByID(scanID)
+			if err == nil {
+				scan.Status = "offers_pending"
+				db.UpdateScan(scan)
+			}
 
-// 			// Redirect to the offers page for this scan
-// 			http.Redirect(w, r, "/patient/offers/"+scanID, http.StatusSeeOther)
-// 			return
-// 		}
+			http.Redirect(w, r, "/patient/dashboard", http.StatusSeeOther)
+			return
+		}
 
-// 		// If no scan ID, redirect to dashboard
-// 		http.Redirect(w, r, "/patient/dashboard", http.StatusSeeOther)
-// 		return
-// 	}
+		http.Redirect(w, r, "/patient/dashboard", http.StatusSeeOther)
+		return
+	}
 
-// 	// GET request - show the form
-// 	data := map[string]interface{}{
-// 		"User": user,
-// 	}
+	data := map[string]interface{}{
+		"User": user,
+	}
 
-// 	err := templates.ExecuteTemplate(w, "criteria.html", data)
-// 	if err != nil {
-// 		log.Printf("Template error: %v", err)
-// 		http.Error(w, err.Error(), http.StatusInternalServerError)
-// 	}
-// }
+	renderTemplate(w, "patient_criteria", data)
+}
 
 func handleOffers(w http.ResponseWriter, r *http.Request) {
 	scanID := strings.TrimPrefix(r.URL.Path, "/patient/offers/")
@@ -184,18 +171,13 @@ func handleOffers(w http.ResponseWriter, r *http.Request) {
 		"Offers": offers,
 	}
 
-	err := templates.ExecuteTemplate(w, "offers.html", data)
-	if err != nil {
-		log.Printf("Template error: %v", err)
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
+	renderTemplate(w, "patient_offers", data)
 }
 
 func handleConsultations(w http.ResponseWriter, r *http.Request) {
 	user := r.Context().Value("user").(*User)
 	consultations, _ := db.GetConsultationsByPatient(user.ID)
 
-	// Get offer details for each consultation
 	var consultationData []map[string]interface{}
 	for _, consultation := range consultations {
 		offer, _ := db.GetOfferByID(consultation.OfferID)
@@ -210,11 +192,7 @@ func handleConsultations(w http.ResponseWriter, r *http.Request) {
 		"Consultations": consultationData,
 	}
 
-	err := templates.ExecuteTemplate(w, "consultations.html", data)
-	if err != nil {
-		log.Printf("Template error: %v", err)
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
+	renderTemplate(w, "patient_consultations", data)
 }
 
 func handleReviews(w http.ResponseWriter, r *http.Request) {
@@ -224,11 +202,7 @@ func handleReviews(w http.ResponseWriter, r *http.Request) {
 		"User": user,
 	}
 
-	err := templates.ExecuteTemplate(w, "reviews.html", data)
-	if err != nil {
-		log.Printf("Template error: %v", err)
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
+	renderTemplate(w, "patient_reviews", data)
 }
 
 func handleSubmitReview(w http.ResponseWriter, r *http.Request) {
@@ -253,6 +227,53 @@ func handleSubmitReview(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/patient/reviews", http.StatusSeeOther)
 }
 
+func handleSelectOffer(w http.ResponseWriter, r *http.Request) {
+	if r.Method != "POST" {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	user := r.Context().Value("user").(*User)
+	offerID := r.FormValue("offer_id")
+
+	offer, err := db.GetOfferByID(offerID)
+	if err != nil {
+		http.Error(w, "Offer not found", http.StatusNotFound)
+		return
+	}
+
+	offer.Status = "selected"
+	db.UpdateOffer(offer)
+
+	consultation := &Consultation{
+		ID:        fmt.Sprintf("consultation-%d", time.Now().Unix()),
+		PatientID: user.ID,
+		OfferID:   offerID,
+		ClinicID:  offer.ClinicID,
+		Status:    "awaiting_call",
+		CreatedAt: time.Now(),
+		UpdatedAt: time.Now(),
+	}
+	db.CreateConsultation(consultation)
+
+	scan, _ := db.GetScanByID(offer.ScanID)
+
+	lead := &Lead{
+		ID:            fmt.Sprintf("lead-%d", time.Now().Unix()),
+		ClinicID:      offer.ClinicID,
+		PatientID:     user.ID,
+		PatientName:   user.Name,
+		PatientPhone:  "+7-999-123-4567",
+		PatientEmail:  user.Email,
+		TreatmentPlan: scan.AIAnalysis.TreatmentPlan,
+		Status:        "new",
+		CreatedAt:     time.Now(),
+	}
+	db.CreateLead(lead)
+
+	http.Redirect(w, r, "/patient/consultations", http.StatusSeeOther)
+}
+
 // Clinic handlers
 func handleClinicDashboard(w http.ResponseWriter, r *http.Request) {
 	user := r.Context().Value("user").(*User)
@@ -263,11 +284,7 @@ func handleClinicDashboard(w http.ResponseWriter, r *http.Request) {
 		"Stats": stats,
 	}
 
-	err := templates.ExecuteTemplate(w, "clinic_dashboard.html", data)
-	if err != nil {
-		log.Printf("Template error: %v", err)
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
+	renderTemplate(w, "clinic_dashboard", data)
 }
 
 func handleIncomingPlans(w http.ResponseWriter, r *http.Request) {
@@ -279,158 +296,7 @@ func handleIncomingPlans(w http.ResponseWriter, r *http.Request) {
 		"Scans": scans,
 	}
 
-	err := templates.ExecuteTemplate(w, "incoming_plans.html", data)
-	if err != nil {
-		log.Printf("Template error: %v", err)
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
-}
-
-// func handleCalculateOffer(w http.ResponseWriter, r *http.Request) {
-// 	if r.Method != "POST" {
-// 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
-// 		return
-// 	}
-
-// 	user := r.Context().Value("user").(*User)
-// 	scanID := r.FormValue("scan_id")
-
-// 	// Create offer
-// 	offer := &Offer{
-// 		ID:           fmt.Sprintf("offer-%d", time.Now().Unix()),
-// 		ScanID:       scanID,
-// 		ClinicID:     user.ID,
-// 		ClinicName:   user.Name,
-// 		Rating:       4.5,
-// 		TotalCost:    125000,
-// 		Duration:     "2-3 месяца",
-// 		Details:      "Комплексный план лечения",
-// 		Guarantees:   "Гарантия 2 года",
-// 		PaymentTerms: "Доступна рассрочка",
-// 		Status:       "pending",
-// 		CreatedAt:    time.Now(),
-// 	}
-
-// 	db.CreateOffer(offer)
-// 	http.Redirect(w, r, "/clinic/incoming-plans", http.StatusSeeOther)
-// }
-
-func handleLeads(w http.ResponseWriter, r *http.Request) {
-	user := r.Context().Value("user").(*User)
-	leads, _ := db.GetLeadsByClinic(user.ID)
-
-	data := map[string]interface{}{
-		"User":  user,
-		"Leads": leads,
-	}
-
-	err := templates.ExecuteTemplate(w, "leads.html", data)
-	if err != nil {
-		log.Printf("Template error: %v", err)
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
-}
-
-func handleAnalytics(w http.ResponseWriter, r *http.Request) {
-	user := r.Context().Value("user").(*User)
-	stats := db.GetClinicStats(user.ID)
-
-	data := map[string]interface{}{
-		"User":  user,
-		"Stats": stats,
-	}
-
-	err := templates.ExecuteTemplate(w, "analytics.html", data)
-	if err != nil {
-		log.Printf("Template error: %v", err)
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
-}
-
-func handlePricing(w http.ResponseWriter, r *http.Request) {
-	user := r.Context().Value("user").(*User)
-	pricing, _ := db.GetClinicPricing(user.ID)
-
-	data := map[string]interface{}{
-		"User":    user,
-		"Pricing": pricing,
-	}
-
-	err := templates.ExecuteTemplate(w, "pricing.html", data)
-	if err != nil {
-		log.Printf("Template error: %v", err)
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
-}
-
-// Regulator handlers
-func handleRegulatorDashboard(w http.ResponseWriter, r *http.Request) {
-	user := r.Context().Value("user").(*User)
-	stats, _ := db.GetRegionStats("Москва")
-
-	data := map[string]interface{}{
-		"User":  user,
-		"Stats": stats,
-	}
-
-	err := templates.ExecuteTemplate(w, "regulator_dashboard.html", data)
-	if err != nil {
-		log.Printf("Template error: %v", err)
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
-}
-
-func handleRegulatorAnalytics(w http.ResponseWriter, r *http.Request) {
-	user := r.Context().Value("user").(*User)
-	stats, _ := db.GetRegionStats("Москва")
-
-	data := map[string]interface{}{
-		"User":  user,
-		"Stats": stats,
-	}
-
-	err := templates.ExecuteTemplate(w, "detailed_analytics.html", data)
-	if err != nil {
-		log.Printf("Template error: %v", err)
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
-}
-
-func handleCriteria(w http.ResponseWriter, r *http.Request) {
-	user := r.Context().Value("user").(*User)
-
-	if r.Method == "POST" {
-		// Process the form submission
-		scanID := r.URL.Query().Get("scan")
-
-		if scanID != "" {
-			// Update scan status so clinics can see it
-			scan, err := db.GetScanByID(scanID)
-			if err == nil {
-				scan.Status = "offers_pending" // Changed from "offers_received"
-				db.UpdateScan(scan)
-			}
-
-			// Redirect to dashboard with a message
-			http.Redirect(w, r, "/patient/dashboard", http.StatusSeeOther)
-			return
-		}
-
-		// If no scan ID, redirect to dashboard
-		http.Redirect(w, r, "/patient/dashboard", http.StatusSeeOther)
-		return
-	}
-
-	// GET request - show the form
-	data := map[string]interface{}{
-		"User": user,
-	}
-
-	err := templates.ExecuteTemplate(w, "criteria.html", data)
-	if err != nil {
-		log.Printf("Template error: %v", err)
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
+	renderTemplate(w, "clinic_incoming_plans", data)
 }
 
 func handleCalculateOffer(w http.ResponseWriter, r *http.Request) {
@@ -442,14 +308,12 @@ func handleCalculateOffer(w http.ResponseWriter, r *http.Request) {
 	user := r.Context().Value("user").(*User)
 	scanID := r.FormValue("scan_id")
 
-	// Get the scan to access patient info
 	scan, err := db.GetScanByID(scanID)
 	if err != nil {
 		http.Error(w, "Scan not found", http.StatusNotFound)
 		return
 	}
 
-	// Create offer
 	offer := &Offer{
 		ID:           fmt.Sprintf("offer-%d", time.Now().Unix()),
 		ScanID:       scanID,
@@ -467,61 +331,69 @@ func handleCalculateOffer(w http.ResponseWriter, r *http.Request) {
 
 	db.CreateOffer(offer)
 
-	// Update scan status to show offers have been received
 	scan.Status = "offers_received"
 	db.UpdateScan(scan)
 
 	http.Redirect(w, r, "/clinic/incoming-plans", http.StatusSeeOther)
 }
 
-func handleSelectOffer(w http.ResponseWriter, r *http.Request) {
-	if r.Method != "POST" {
-		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
-		return
-	}
-	
+func handleLeads(w http.ResponseWriter, r *http.Request) {
 	user := r.Context().Value("user").(*User)
-	offerID := r.FormValue("offer_id")
-	
-	// Get the offer
-	offer, err := db.GetOfferByID(offerID)
-	if err != nil {
-		http.Error(w, "Offer not found", http.StatusNotFound)
-		return
+	leads, _ := db.GetLeadsByClinic(user.ID)
+
+	data := map[string]interface{}{
+		"User":  user,
+		"Leads": leads,
 	}
-	
-	// Update offer status
-	offer.Status = "selected"
-	db.UpdateOffer(offer)
-	
-	// Create consultation for patient
-	consultation := &Consultation{
-		ID:        fmt.Sprintf("consultation-%d", time.Now().Unix()),
-		PatientID: user.ID,
-		OfferID:   offerID,
-		ClinicID:  offer.ClinicID,
-		Status:    "awaiting_call",
-		CreatedAt: time.Now(),
-		UpdatedAt: time.Now(),
+
+	renderTemplate(w, "clinic_leads", data)
+}
+
+func handleAnalytics(w http.ResponseWriter, r *http.Request) {
+	user := r.Context().Value("user").(*User)
+	stats := db.GetClinicStats(user.ID)
+
+	data := map[string]interface{}{
+		"User":  user,
+		"Stats": stats,
 	}
-	db.CreateConsultation(consultation)
-	
-	// Get scan to access treatment plan
-	scan, _ := db.GetScanByID(offer.ScanID)
-	
-	// Create lead for clinic
-	lead := &Lead{
-		ID:            fmt.Sprintf("lead-%d", time.Now().Unix()),
-		ClinicID:      offer.ClinicID,
-		PatientID:     user.ID,
-		PatientName:   user.Name,
-		PatientPhone:  "+7-999-123-4567", // In real app, get from user profile
-		PatientEmail:  user.Email,
-		TreatmentPlan: scan.AIAnalysis.TreatmentPlan,
-		Status:        "new",
-		CreatedAt:     time.Now(),
+
+	renderTemplate(w, "clinic_analytics", data)
+}
+
+func handlePricing(w http.ResponseWriter, r *http.Request) {
+	user := r.Context().Value("user").(*User)
+	pricing, _ := db.GetClinicPricing(user.ID)
+
+	data := map[string]interface{}{
+		"User":    user,
+		"Pricing": pricing,
 	}
-	db.CreateLead(lead)
-	
-	http.Redirect(w, r, "/patient/consultations", http.StatusSeeOther)
+
+	renderTemplate(w, "clinic_pricing", data)
+}
+
+// Regulator handlers
+func handleRegulatorDashboard(w http.ResponseWriter, r *http.Request) {
+	user := r.Context().Value("user").(*User)
+	stats, _ := db.GetRegionStats("Москва")
+
+	data := map[string]interface{}{
+		"User":  user,
+		"Stats": stats,
+	}
+
+	renderTemplate(w, "regulator_dashboard", data)
+}
+
+func handleRegulatorAnalytics(w http.ResponseWriter, r *http.Request) {
+	user := r.Context().Value("user").(*User)
+	stats, _ := db.GetRegionStats("Москва")
+
+	data := map[string]interface{}{
+		"User":  user,
+		"Stats": stats,
+	}
+
+	renderTemplate(w, "regulator_analytics", data)
 }

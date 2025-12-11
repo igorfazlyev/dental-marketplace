@@ -2,6 +2,7 @@ package main
 
 import (
 	"errors"
+	"sort"
 	"sync"
 )
 
@@ -58,6 +59,26 @@ type InMemoryDatabase struct {
 	reviews       map[string]*Review
 	pricing       map[string]*ClinicPricing
 	mu            sync.RWMutex
+}
+
+// At the top of database.go, add this optimization
+func (db *InMemoryDatabase) GetScansByPatient(patientID string) ([]*Scan, error) {
+	db.mu.RLock()
+	defer db.mu.RUnlock()
+
+	var scans []*Scan
+	for _, scan := range db.scans {
+		if scan.PatientID == patientID {
+			scans = append(scans, scan)
+		}
+	}
+
+	// Sort by upload date (newest first) - do this once in DB, not in template
+	sort.Slice(scans, func(i, j int) bool {
+		return scans[i].UploadDate.After(scans[j].UploadDate)
+	})
+
+	return scans, nil
 }
 
 func NewInMemoryDatabase() *InMemoryDatabase {
@@ -122,18 +143,18 @@ func (db *InMemoryDatabase) GetScanByID(id string) (*Scan, error) {
 	return scan, nil
 }
 
-func (db *InMemoryDatabase) GetScansByPatient(patientID string) ([]*Scan, error) {
-	db.mu.RLock()
-	defer db.mu.RUnlock()
+// func (db *InMemoryDatabase) GetScansByPatient(patientID string) ([]*Scan, error) {
+// 	db.mu.RLock()
+// 	defer db.mu.RUnlock()
 
-	var scans []*Scan
-	for _, scan := range db.scans {
-		if scan.PatientID == patientID {
-			scans = append(scans, scan)
-		}
-	}
-	return scans, nil
-}
+// 	var scans []*Scan
+// 	for _, scan := range db.scans {
+// 		if scan.PatientID == patientID {
+// 			scans = append(scans, scan)
+// 		}
+// 	}
+// 	return scans, nil
+// }
 
 func (db *InMemoryDatabase) UpdateScan(scan *Scan) error {
 	db.mu.Lock()
