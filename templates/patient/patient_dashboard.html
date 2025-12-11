@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет пациента</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; }
+        .navbar { background: #2c3e50; color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .navbar h1 { font-size: 1.5rem; }
+        .navbar a { color: white; text-decoration: none; margin-left: 1rem; }
+        .navbar a:hover { text-decoration: underline; }
+        .container { max-width: 1200px; margin: 2rem auto; padding: 0 2rem; }
+        .card { background: white; border-radius: 8px; padding: 2rem; margin-bottom: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .btn { background: #3498db; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-block; }
+        .btn:hover { background: #2980b9; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background: #f8f9fa; font-weight: 600; }
+        .status { padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.875rem; display: inline-block; }
+        .status-processing { background: #fff3cd; color: #856404; }
+        .status-analyzed { background: #d1ecf1; color: #0c5460; }
+        .status-offers_pending { background: #f8d7da; color: #721c24; }
+        .status-offers_received { background: #d4edda; color: #155724; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .stat-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1.5rem; border-radius: 8px; }
+        .stat-card h3 { font-size: 2rem; margin-bottom: 0.5rem; }
+        .stat-card p { opacity: 0.9; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>🦷 Стоматологическая платформа - Пациент</h1>
+        <div>
+            <span>Добро пожаловать, {{.User.Name}}</span>
+            <a href="/patient/scans">Мои снимки</a>
+            <a href="/patient/consultations">Консультации</a>
+            <a href="/patient/reviews">Отзывы</a>
+            <a href="/logout">Выход</a>
+        </div>
+    </div>
+    <div class="container">
+        <h2 style="margin-bottom: 1.5rem;">Панель управления</h2>
+        
+        <div class="grid">
+            <div class="stat-card">
+                <h3>{{len .Scans}}</h3>
+                <p>Всего снимков</p>
+            </div>
+            <div class="stat-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                <h3>{{len .Consultations}}</h3>
+                <p>Консультаций</p>
+            </div>
+            <div class="stat-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                <h3>{{range .Scans}}{{if eq .Status "offers_received"}}1{{end}}{{end}}</h3>
+                <p>Ожидающих предложений</p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h3 style="margin-bottom: 1rem;">Недавние снимки</h3>
+            {{if .Scans}}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Дата загрузки</th>
+                        <th>Статус</th>
+                        <th>Действия</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{range .Scans}}
+                    <tr>
+                        <td>{{.UploadDate.Format "02.01.2006 15:04"}}</td>
+                        <td><span class="status status-{{.Status}}">
+                            {{if eq .Status "processing"}}Обработка{{else if eq .Status "analyzed"}}Проанализировано{{else if eq .Status "offers_pending"}}Ожидание предложений{{else if eq .Status "offers_received"}}Предложения получены{{else}}{{.Status}}{{end}}
+                        </span></td>
+                        <td>
+                            {{if eq .Status "analyzed"}}
+                            <a href="/patient/treatment-plan/{{.ID}}" class="btn">Посмотреть план</a>
+                            {{else if eq .Status "offers_received"}}
+                            <a href="/patient/offers/{{.ID}}" class="btn">Посмотреть предложения</a>
+                            {{end}}
+                        </td>
+                    </tr>
+                    {{end}}
+                </tbody>
+            </table>
+            {{else}}
+            <p>Снимков пока нет. Загрузите свой первый КТ-снимок для начала работы!</p>
+            {{end}}
+        </div>
+    </div>
+</body>
+</html>

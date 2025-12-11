@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Входящие планы</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; }
+        .navbar { background: #2c3e50; color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .navbar h1 { font-size: 1.5rem; }
+        .navbar a { color: white; text-decoration: none; margin-left: 1rem; }
+        .navbar a:hover { text-decoration: underline; }
+        .container { max-width: 1200px; margin: 2rem auto; padding: 0 2rem; }
+        .card { background: white; border-radius: 8px; padding: 2rem; margin-bottom: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .btn { background: #3498db; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 4px; cursor: pointer; }
+        .btn:hover { background: #2980b9; }
+        .btn-success { background: #27ae60; }
+        .btn-success:hover { background: #229954; }
+        ul { margin: 0.5rem 0; list-style-position: inside; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>🏥 Входящие планы лечения</h1>
+        <div>
+            <a href="/clinic/dashboard">Панель управления</a>
+            <a href="/clinic/leads">Лиды</a>
+            <a href="/clinic/analytics">Аналитика</a>
+            <a href="/logout">Выход</a>
+        </div>
+    </div>
+    <div class="container">
+        <h2 style="margin-bottom: 1.5rem;">Доступные планы лечения</h2>
+        
+        {{if .Scans}}
+        {{range .Scans}}
+        <div class="card">
+            <h3>План лечения {{.ID}}</h3>
+            <p><strong>Дата загрузки:</strong> {{.UploadDate.Format "02 янв 2006"}}</p>
+            
+            {{if .AIAnalysis}}
+            <h4 style="margin-top: 1rem;">Необходимые процедуры:</h4>
+            <ul>
+                {{range .AIAnalysis.TreatmentPlan}}
+                <li>{{.Description}} ({{.ToothNumber}})</li>
+                {{end}}
+            </ul>
+            {{end}}
+            
+            <form method="POST" action="/clinic/calculate-offer" style="margin-top: 1rem;">
+                <input type="hidden" name="scan_id" value="{{.ID}}">
+                <button type="submit" class="btn btn-success">Рассчитать и отправить предложение</button>
+            </form>
+        </div>
+        {{end}}
+        {{else}}
+        <div class="card">
+            <p>В данный момент планов лечения нет.</p>
+        </div>
+        {{end}}
+    </div>
+</body>
+</html>

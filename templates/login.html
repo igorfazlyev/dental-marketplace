@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход - Стоматологическая платформа</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+        .card { background: white; border-radius: 8px; padding: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .btn { background: #3498db; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 4px; cursor: pointer; width: 100%; }
+        .btn:hover { background: #2980b9; }
+        input { width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 1rem; }
+        label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
+    </style>
+</head>
+<body>
+    <div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+        <div class="card" style="width: 400px;">
+            <h2 style="margin-bottom: 1.5rem; text-align: center;">🦷 Стоматологическая платформа</h2>
+            {{if .Error}}
+            <div style="background: #f8d7da; color: #721c24; padding: 0.75rem; border-radius: 4px; margin-bottom: 1rem;">
+                {{.Error}}
+            </div>
+            {{end}}
+            <form method="POST" action="/login">
+                <label>Имя пользователя</label>
+                <input type="text" name="username" required>
+                
+                <label>Пароль</label>
+                <input type="password" name="password" required>
+                
+                <button type="submit" class="btn">Войти</button>
+            </form>
+            <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #ddd;">
+                <p style="font-size: 0.875rem; color: #666; margin-bottom: 0.5rem;"><strong>Демо учетные записи:</strong></p>
+                <p style="font-size: 0.875rem; color: #666;">Пациент: demo / demo</p>
+                <p style="font-size: 0.875rem; color: #666;">Клиника: clinic / clinic</p>
+                <p style="font-size: 0.875rem; color: #666;">Регулятор: regulator / regulator</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

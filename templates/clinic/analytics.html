@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аналитика и отчеты</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; }
+        .navbar { background: #2c3e50; color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .navbar h1 { font-size: 1.5rem; }
+        .navbar a { color: white; text-decoration: none; margin-left: 1rem; }
+        .navbar a:hover { text-decoration: underline; }
+        .container { max-width: 1200px; margin: 2rem auto; padding: 0 2rem; }
+        .card { background: white; border-radius: 8px; padding: 2rem; margin-bottom: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .stats-row { display: flex; gap: 2rem; margin-top: 1rem; }
+        .stat-item { flex: 1; }
+        .stat-item p { color: #666; margin-bottom: 0.5rem; }
+        .stat-item h2 { color: #3498db; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>🏥 Аналитика и отчеты</h1>
+        <div>
+            <a href="/clinic/dashboard">Панель управления</a>
+            <a href="/clinic/leads">Лиды</a>
+            <a href="/clinic/pricing">Прайс-лист</a>
+            <a href="/logout">Выход</a>
+        </div>
+    </div>
+    <div class="container">
+        <h2 style="margin-bottom: 1.5rem;">Аналитика эффективности</h2>
+        
+        <div class="card">
+            <h3>План против факта</h3>
+            <div class="stats-row">
+                <div class="stat-item">
+                    <p>Плановая выручка</p>
+                    <h2>₽{{printf "%.0f" (index .Stats "potential_revenue")}}</h2>
+                </div>
+                <div class="stat-item">
+                    <p>Коэффициент конверсии</p>
+                    <h2 style="color: #27ae60;">{{printf "%.1f" (index .Stats "conversion_rate")}}%</h2>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h3>Статистика предложений</h3>
+            <p style="margin-top: 1rem;">Всего отправлено предложений: <strong>{{index .Stats "total_offers"}}</strong></p>
+            <p>Активных лидов: <strong>{{index .Stats "total_leads"}}</strong></p>
+        </div>
+    </div>
+</body>
+</html>

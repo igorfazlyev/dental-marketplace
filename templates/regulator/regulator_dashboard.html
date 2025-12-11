@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель регулятора</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; }
+        .navbar { background: #2c3e50; color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .navbar h1 { font-size: 1.5rem; }
+        .navbar a { color: white; text-decoration: none; margin-left: 1rem; }
+        .navbar a:hover { text-decoration: underline; }
+        .container { max-width: 1200px; margin: 2rem auto; padding: 0 2rem; }
+        .card { background: white; border-radius: 8px; padding: 2rem; margin-bottom: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .stat-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1.5rem; border-radius: 8px; }
+        .stat-card h3 { font-size: 2rem; margin-bottom: 0.5rem; }
+        .stat-card p { opacity: 0.9; }
+        table { width: 100%; border-collapse: collapse; }
+        tr { border-bottom: 1px solid #ddd; }
+        td { padding: 0.75rem; }
+        td:first-child { font-weight: 500; }
+        td:last-child { text-align: right; font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>📊 Панель регулятора</h1>
+        <div>
+            <a href="/regulator/analytics">Детальная аналитика</a>
+            <a href="/logout">Выход</a>
+        </div>
+    </div>
+    <div class="container">
+        <h2 style="margin-bottom: 1.5rem;">Региональный мониторинг здравоохранения</h2>
+        
+        <div class="grid">
+            <div class="stat-card">
+                <h3>{{.Stats.TotalPlans}}</h3>
+                <p>Всего планов лечения</p>
+            </div>
+            <div class="stat-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                <h3>₽{{printf "%.0f" .Stats.PlannedRevenue}}</h3>
+                <p>Плановая выручка</p>
+            </div>
+            <div class="stat-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                <h3>₽{{printf "%.0f" .Stats.ActualRevenue}}</h3>
+                <p>Фактическая выручка</p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h3 style="margin-bottom: 1rem;">Средние цены на услуги</h3>
+            <table>
+                <tr>
+                    <td>Зубной имплант</td>
+                    <td>₽{{printf "%.0f" .Stats.AverageImplantPrice}}</td>
+                </tr>
+                <tr>
+                    <td>Зубная коронка</td>
+                    <td>₽{{printf "%.0f" .Stats.AverageCrownPrice}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

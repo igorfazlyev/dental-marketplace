@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Предложения клиник</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; }
+        .navbar { background: #2c3e50; color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .navbar h1 { font-size: 1.5rem; }
+        .navbar a { color: white; text-decoration: none; margin-left: 1rem; }
+        .navbar a:hover { text-decoration: underline; }
+        .container { max-width: 1200px; margin: 2rem auto; padding: 0 2rem; }
+        .card { background: white; border-radius: 8px; padding: 2rem; margin-bottom: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .btn { background: #3498db; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-block; }
+        .btn:hover { background: #2980b9; }
+        .btn-success { background: #27ae60; }
+        .btn-success:hover { background: #229954; }
+        .btn-danger { background: #e74c3c; }
+        .btn-danger:hover { background: #c0392b; }
+        .status { padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.875rem; display: inline-block; margin-top: 1rem; }
+        .status-pending { background: #fff3cd; color: #856404; }
+        .status-selected { background: #d4edda; color: #155724; }
+        .status-rejected { background: #f8d7da; color: #721c24; }
+        .offer-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 1.5rem; }
+        .offer-details { margin: 1.5rem 0; }
+        .offer-details p { margin-bottom: 0.5rem; }
+        .button-group { display: flex; gap: 1rem; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>🦷 Предложения клиник</h1>
+        <div>
+            <a href="/patient/dashboard">Панель управления</a>
+            <a href="/patient/scans">Мои снимки</a>
+            <a href="/logout">Выход</a>
+        </div>
+    </div>
+    <div class="container">
+        <h2>Предложения для плана лечения</h2>
+        <p style="color: #666; margin-bottom: 2rem;">Снимок: {{.Scan.ID}}</p>
+        
+        {{if .Offers}}
+        {{range .Offers}}
+        <div class="card">
+            <div class="offer-header">
+                <div>
+                    <h3>{{.ClinicName}}</h3>
+                    <p style="color: #666;">Рейтинг: ⭐ {{.Rating}}/5.0</p>
+                </div>
+                <div style="text-align: right;">
+                    <h2 style="color: #27ae60;">₽{{printf "%.0f" .TotalCost}}</h2>
+                    <p style="color: #666;">{{.Duration}}</p>
+                </div>
+            </div>
+            
+            <div class="offer-details">
+                <p><strong>Детали:</strong> {{.Details}}</p>
+                <p><strong>Гарантии:</strong> {{.Guarantees}}</p>
+                <p><strong>Оплата:</strong> {{.PaymentTerms}}</p>
+            </div>
+            
+            <div class="button-group">
+                <button class="btn btn-success">Выбрать для консультации</button>
+                <button class="btn btn-danger">Отклонить</button>
+            </div>
+            
+            <span class="status status-{{.Status}}">
+                {{if eq .Status "pending"}}В ожидании{{else if eq .Status "selected"}}Выбрано{{else if eq .Status "rejected"}}Отклонено{{else}}{{.Status}}{{end}}
+            </span>
+        </div>
+        {{end}}
+        {{else}}
+        <div class="card">
+            <p>Предложения пока недоступны. Пожалуйста, проверьте позже.</p>
+        </div>
+        {{end}}
+    </div>
+</body>
+</html>
