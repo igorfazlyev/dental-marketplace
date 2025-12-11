@@ -81,6 +81,7 @@ func main() {
 	mux.HandleFunc("/patient/consultations", authMiddleware("patient", handleConsultations))
 	mux.HandleFunc("/patient/reviews", authMiddleware("patient", handleReviews))
 	mux.HandleFunc("/patient/reviews/submit", authMiddleware("patient", handleSubmitReview))
+	mux.HandleFunc("/patient/select-offer", authMiddleware("patient", handleSelectOffer))
 
 	// Clinic routes
 	mux.HandleFunc("/clinic/dashboard", authMiddleware("clinic", handleClinicDashboard))

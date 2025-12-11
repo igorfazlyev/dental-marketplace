@@ -62,10 +62,15 @@
                 <p><strong>Оплата:</strong> {{.PaymentTerms}}</p>
             </div>
             
+            {{if eq .Status "pending"}}
             <div class="button-group">
-                <button class="btn btn-success">Выбрать для консультации</button>
-                <button class="btn btn-danger">Отклонить</button>
+                <form method="POST" action="/patient/select-offer" style="display: inline;">
+                    <input type="hidden" name="offer_id" value="{{.ID}}">
+                    <button type="submit" class="btn btn-success">Выбрать для консультации</button>
+                </form>
+                <button class="btn btn-danger" onclick="alert('Предложение отклонено')">Отклонить</button>
             </div>
+            {{end}}
             
             <span class="status status-{{.Status}}">
                 {{if eq .Status "pending"}}В ожидании{{else if eq .Status "selected"}}Выбрано{{else if eq .Status "rejected"}}Отклонено{{else}}{{.Status}}{{end}}
@@ -74,7 +79,8 @@
         {{end}}
         {{else}}
         <div class="card">
-            <p>Предложения пока недоступны. Пожалуйста, проверьте позже.</p>
+            <p>Предложения пока недоступны. Клиники работают над вашим планом лечения.</p>
+            <p style="margin-top: 1rem;"><a href="/patient/dashboard" class="btn">Вернуться на главную</a></p>
         </div>
         {{end}}
     </div>

@@ -135,42 +135,42 @@ func handleTreatmentPlan(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func handleCriteria(w http.ResponseWriter, r *http.Request) {
-	user := r.Context().Value("user").(*User)
+// func handleCriteria(w http.ResponseWriter, r *http.Request) {
+// 	user := r.Context().Value("user").(*User)
 
-	if r.Method == "POST" {
-		// Process the form submission
-		scanID := r.URL.Query().Get("scan")
+// 	if r.Method == "POST" {
+// 		// Process the form submission
+// 		scanID := r.URL.Query().Get("scan")
 
-		if scanID != "" {
-			// Update scan status to show offers are being requested
-			scan, err := db.GetScanByID(scanID)
-			if err == nil {
-				scan.Status = "offers_received"
-				db.UpdateScan(scan)
-			}
+// 		if scanID != "" {
+// 			// Update scan status to show offers are being requested
+// 			scan, err := db.GetScanByID(scanID)
+// 			if err == nil {
+// 				scan.Status = "offers_received"
+// 				db.UpdateScan(scan)
+// 			}
 
-			// Redirect to the offers page for this scan
-			http.Redirect(w, r, "/patient/offers/"+scanID, http.StatusSeeOther)
-			return
-		}
+// 			// Redirect to the offers page for this scan
+// 			http.Redirect(w, r, "/patient/offers/"+scanID, http.StatusSeeOther)
+// 			return
+// 		}
 
-		// If no scan ID, redirect to dashboard
-		http.Redirect(w, r, "/patient/dashboard", http.StatusSeeOther)
-		return
-	}
+// 		// If no scan ID, redirect to dashboard
+// 		http.Redirect(w, r, "/patient/dashboard", http.StatusSeeOther)
+// 		return
+// 	}
 
-	// GET request - show the form
-	data := map[string]interface{}{
-		"User": user,
-	}
+// 	// GET request - show the form
+// 	data := map[string]interface{}{
+// 		"User": user,
+// 	}
 
-	err := templates.ExecuteTemplate(w, "criteria.html", data)
-	if err != nil {
-		log.Printf("Template error: %v", err)
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
-}
+// 	err := templates.ExecuteTemplate(w, "criteria.html", data)
+// 	if err != nil {
+// 		log.Printf("Template error: %v", err)
+// 		http.Error(w, err.Error(), http.StatusInternalServerError)
+// 	}
+// }
 
 func handleOffers(w http.ResponseWriter, r *http.Request) {
 	scanID := strings.TrimPrefix(r.URL.Path, "/patient/offers/")
@@ -286,34 +286,34 @@ func handleIncomingPlans(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func handleCalculateOffer(w http.ResponseWriter, r *http.Request) {
-	if r.Method != "POST" {
-		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
-		return
-	}
+// func handleCalculateOffer(w http.ResponseWriter, r *http.Request) {
+// 	if r.Method != "POST" {
+// 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+// 		return
+// 	}
 
-	user := r.Context().Value("user").(*User)
-	scanID := r.FormValue("scan_id")
+// 	user := r.Context().Value("user").(*User)
+// 	scanID := r.FormValue("scan_id")
 
-	// Create offer
-	offer := &Offer{
-		ID:           fmt.Sprintf("offer-%d", time.Now().Unix()),
-		ScanID:       scanID,
-		ClinicID:     user.ID,
-		ClinicName:   user.Name,
-		Rating:       4.5,
-		TotalCost:    125000,
-		Duration:     "2-3 месяца",
-		Details:      "Комплексный план лечения",
-		Guarantees:   "Гарантия 2 года",
-		PaymentTerms: "Доступна рассрочка",
-		Status:       "pending",
-		CreatedAt:    time.Now(),
-	}
+// 	// Create offer
+// 	offer := &Offer{
+// 		ID:           fmt.Sprintf("offer-%d", time.Now().Unix()),
+// 		ScanID:       scanID,
+// 		ClinicID:     user.ID,
+// 		ClinicName:   user.Name,
+// 		Rating:       4.5,
+// 		TotalCost:    125000,
+// 		Duration:     "2-3 месяца",
+// 		Details:      "Комплексный план лечения",
+// 		Guarantees:   "Гарантия 2 года",
+// 		PaymentTerms: "Доступна рассрочка",
+// 		Status:       "pending",
+// 		CreatedAt:    time.Now(),
+// 	}
 
-	db.CreateOffer(offer)
-	http.Redirect(w, r, "/clinic/incoming-plans", http.StatusSeeOther)
-}
+// 	db.CreateOffer(offer)
+// 	http.Redirect(w, r, "/clinic/incoming-plans", http.StatusSeeOther)
+// }
 
 func handleLeads(w http.ResponseWriter, r *http.Request) {
 	user := r.Context().Value("user").(*User)
@@ -394,4 +394,134 @@ func handleRegulatorAnalytics(w http.ResponseWriter, r *http.Request) {
 		log.Printf("Template error: %v", err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
+}
+
+func handleCriteria(w http.ResponseWriter, r *http.Request) {
+	user := r.Context().Value("user").(*User)
+
+	if r.Method == "POST" {
+		// Process the form submission
+		scanID := r.URL.Query().Get("scan")
+
+		if scanID != "" {
+			// Update scan status so clinics can see it
+			scan, err := db.GetScanByID(scanID)
+			if err == nil {
+				scan.Status = "offers_pending" // Changed from "offers_received"
+				db.UpdateScan(scan)
+			}
+
+			// Redirect to dashboard with a message
+			http.Redirect(w, r, "/patient/dashboard", http.StatusSeeOther)
+			return
+		}
+
+		// If no scan ID, redirect to dashboard
+		http.Redirect(w, r, "/patient/dashboard", http.StatusSeeOther)
+		return
+	}
+
+	// GET request - show the form
+	data := map[string]interface{}{
+		"User": user,
+	}
+
+	err := templates.ExecuteTemplate(w, "criteria.html", data)
+	if err != nil {
+		log.Printf("Template error: %v", err)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+}
+
+func handleCalculateOffer(w http.ResponseWriter, r *http.Request) {
+	if r.Method != "POST" {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	user := r.Context().Value("user").(*User)
+	scanID := r.FormValue("scan_id")
+
+	// Get the scan to access patient info
+	scan, err := db.GetScanByID(scanID)
+	if err != nil {
+		http.Error(w, "Scan not found", http.StatusNotFound)
+		return
+	}
+
+	// Create offer
+	offer := &Offer{
+		ID:           fmt.Sprintf("offer-%d", time.Now().Unix()),
+		ScanID:       scanID,
+		ClinicID:     user.ID,
+		ClinicName:   user.Name,
+		Rating:       4.5,
+		TotalCost:    125000,
+		Duration:     "2-3 месяца",
+		Details:      "Комплексный план лечения",
+		Guarantees:   "Гарантия 2 года",
+		PaymentTerms: "Доступна рассрочка",
+		Status:       "pending",
+		CreatedAt:    time.Now(),
+	}
+
+	db.CreateOffer(offer)
+
+	// Update scan status to show offers have been received
+	scan.Status = "offers_received"
+	db.UpdateScan(scan)
+
+	http.Redirect(w, r, "/clinic/incoming-plans", http.StatusSeeOther)
+}
+
+func handleSelectOffer(w http.ResponseWriter, r *http.Request) {
+	if r.Method != "POST" {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+	
+	user := r.Context().Value("user").(*User)
+	offerID := r.FormValue("offer_id")
+	
+	// Get the offer
+	offer, err := db.GetOfferByID(offerID)
+	if err != nil {
+		http.Error(w, "Offer not found", http.StatusNotFound)
+		return
+	}
+	
+	// Update offer status
+	offer.Status = "selected"
+	db.UpdateOffer(offer)
+	
+	// Create consultation for patient
+	consultation := &Consultation{
+		ID:        fmt.Sprintf("consultation-%d", time.Now().Unix()),
+		PatientID: user.ID,
+		OfferID:   offerID,
+		ClinicID:  offer.ClinicID,
+		Status:    "awaiting_call",
+		CreatedAt: time.Now(),
+		UpdatedAt: time.Now(),
+	}
+	db.CreateConsultation(consultation)
+	
+	// Get scan to access treatment plan
+	scan, _ := db.GetScanByID(offer.ScanID)
+	
+	// Create lead for clinic
+	lead := &Lead{
+		ID:            fmt.Sprintf("lead-%d", time.Now().Unix()),
+		ClinicID:      offer.ClinicID,
+		PatientID:     user.ID,
+		PatientName:   user.Name,
+		PatientPhone:  "+7-999-123-4567", // In real app, get from user profile
+		PatientEmail:  user.Email,
+		TreatmentPlan: scan.AIAnalysis.TreatmentPlan,
+		Status:        "new",
+		CreatedAt:     time.Now(),
+	}
+	db.CreateLead(lead)
+	
+	http.Redirect(w, r, "/patient/consultations", http.StatusSeeOther)
 }
