@@ -43,7 +43,7 @@
             </span></p>
             <p><strong>Общая стоимость:</strong> ₽{{printf "%.0f" .Offer.TotalCost}}</p>
             <p><strong>Длительность:</strong> {{.Offer.Duration}}</p>
-            <p><strong>Создано:</strong> {{.Consultation.CreatedAt.Format "02 янв 2006"}}</p>
+            <p><strong>Создано:</strong> {{.Consultation.CreatedAt.Format "02.01.2006 15:04"}}</p>
             {{else}}
             <p>Детали консультации недоступны</p>
             {{end}}

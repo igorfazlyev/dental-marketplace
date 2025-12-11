@@ -37,7 +37,7 @@
         {{range .Scans}}
         <div class="card">
             <h3>План лечения {{.ID}}</h3>
-            <p><strong>Дата загрузки:</strong> {{.UploadDate.Format "02 янв 2006"}}</p>
+            <p><strong>Дата загрузки:</strong> {{.UploadDate.Format "02.01.2006 15:04"}}</p>
             
             {{if .AIAnalysis}}
             <h4 style="margin-top: 1rem;">Необходимые процедуры:</h4>

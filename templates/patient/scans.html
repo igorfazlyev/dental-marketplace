@@ -61,7 +61,7 @@
                     {{range .Scans}}
                     <tr>
                         <td>{{.ID}}</td>
-                        <td>{{.UploadDate.Format "02 янв 2006 15:04"}}</td>
+                        <td>{{.UploadDate.Format "02.01.2006 15:04"}}</td>
                         <td><span class="status status-{{.Status}}">
                             {{if eq .Status "processing"}}Обработка{{else if eq .Status "analyzed"}}Проанализировано{{else if eq .Status "offers_pending"}}Ожидание предложений{{else if eq .Status "offers_received"}}Предложения получены{{else}}{{.Status}}{{end}}
                         </span></td>

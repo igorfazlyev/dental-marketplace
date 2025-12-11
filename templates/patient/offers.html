@@ -60,6 +60,7 @@
                 <p><strong>Детали:</strong> {{.Details}}</p>
                 <p><strong>Гарантии:</strong> {{.Guarantees}}</p>
                 <p><strong>Оплата:</strong> {{.PaymentTerms}}</p>
+                <p><strong>Дата предложения:</strong> {{.CreatedAt.Format "02.01.2006 15:04"}}</p>
             </div>
             
             {{if eq .Status "pending"}}

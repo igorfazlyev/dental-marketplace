@@ -59,7 +59,7 @@
                         <td><span class="status status-{{.Status}}">
                             {{if eq .Status "new"}}Новый{{else if eq .Status "contacted"}}Связались{{else if eq .Status "scheduled"}}Запланировано{{else if eq .Status "treatment_started"}}Лечение начато{{else if eq .Status "rejected"}}Отказ{{else}}{{.Status}}{{end}}
                         </span></td>
-                        <td>{{.CreatedAt.Format "02 янв 2006"}}</td>
+                        <td>{{.CreatedAt.Format "02.01.2006 15:04"}}</td>
                         <td><button class="btn">Связаться</button></td>
                     </tr>
                     {{end}}
