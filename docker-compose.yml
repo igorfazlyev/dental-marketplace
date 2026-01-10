@@ -1,0 +1,66 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: dental_db
+      POSTGRES_USER: dental_user
+      POSTGRES_PASSWORD: dental_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dental_user"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  orthanc:
+    image: jodogne/orthanc-plugins:latest
+    ports:
+      - "8042:8042"
+      - "4242:4242"
+    volumes:
+      - orthanc_data:/var/lib/orthanc/db
+      - ./orthanc/orthanc.json:/etc/orthanc/orthanc.json:ro
+    environment:
+      - ORTHANC_USERNAME=admin
+      - ORTHANC_PASSWORD=orthanc123
+    depends_on:
+      - postgres
+
+  backend:
+    build: ./backend
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=dental_user
+      - DB_PASSWORD=dental_pass
+      - DB_NAME=dental_db
+      - JWT_SECRET=your-super-secret-jwt-key-change-in-production
+      - ORTHANC_URL=http://orthanc:8042
+      - ORTHANC_USER=admin
+      - ORTHANC_PASS=orthanc123
+      - SEED_DB=true  # Add this to seed on startup
+    depends_on:
+      postgres:
+        condition: service_healthy
+      orthanc:
+        condition: service_started
+    volumes:
+      - ./backend:/app
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    environment:
+      - REACT_APP_API_URL=http://localhost:8080
+
+volumes:
+  postgres_data:
+  orthanc_data:

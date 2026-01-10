@@ -1,0 +1,22 @@
+{
+  "Name": "Dental Marketplace PACS",
+  "HttpPort": 8042,
+  "DicomPort": 4242,
+  "RemoteAccessAllowed": true,
+  "AuthenticationEnabled": true,
+  "RegisteredUsers": {
+    "admin": "orthanc123"
+  },
+  "DicomWeb": {
+    "Enable": true,
+    "Root": "/dicom-web/"
+  },
+  "HttpTimeout": 60,
+  "StableAge": 10,
+  "StrictAetComparison": false,
+  "StorageDirectory": "/var/lib/orthanc/db",
+  "IndexDirectory": "/var/lib/orthanc/db",
+  "Plugins": [
+    "/usr/share/orthanc/plugins"
+  ]
+}
