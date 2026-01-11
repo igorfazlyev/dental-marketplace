@@ -45,6 +45,13 @@ services:
     ports:
       - "8080:8080"
     environment:
+      # Comment out or remove the API key line
+      # - DIAGNOCAT_API_KEY=your-api-key-here
+      
+      # Add user credentials instead
+      - DIAGNOCAT_EMAIL=Drblinder@mail.ru
+      - DIAGNOCAT_PASSWORD=DrOrtho5993
+      #
       - DB_HOST=postgres
       - DB_PORT=5432
       - DB_USER=dental_user

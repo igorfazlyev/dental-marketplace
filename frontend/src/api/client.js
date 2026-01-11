@@ -47,26 +47,29 @@ export const authAPI = {
 
 // Patient API
 export const patientAPI = {
-  uploadDICOM: (file, onProgress) => {
-    const formData = new FormData();
-    formData.append("file", file);
-
-    return apiClient.post("/api/patient/upload", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
+  // UPDATED: Now accepts FormData with destination parameter
+  uploadDICOM: (formData, onUploadProgress) =>
+    apiClient.post("/api/patient/upload", formData, {
+      headers: { "Content-Type": "multipart/form-data" },
       onUploadProgress: (progressEvent) => {
-        if (onProgress) {
-          const percentCompleted = Math.round(
-            (progressEvent.loaded * 100) / progressEvent.total
-          );
-          onProgress(percentCompleted);
-        }
+        const progress = Math.round(
+          (progressEvent.loaded * 100) / progressEvent.total
+        );
+        onUploadProgress(progress);
       },
-    });
-  },
+    }),
 
   getStudies: () => apiClient.get("/api/patient/studies"),
+};
+
+export const diagnocatAPI = {
+  sendStudy: (studyId) =>
+    apiClient.post("/api/patient/diagnocat/send", { study_id: studyId }),
+
+  getAnalyses: () => apiClient.get("/api/patient/diagnocat/analyses"),
+
+  refreshAnalysis: (analysisId) =>
+    apiClient.get(`/api/patient/diagnocat/analyses/${analysisId}/refresh`),
 };
 
 export default apiClient;

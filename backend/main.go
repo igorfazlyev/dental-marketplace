@@ -66,6 +66,12 @@ func main() {
 		{
 			patient.POST("/upload", handlers.UploadDICOM)
 			patient.GET("/studies", handlers.GetMyStudies)
+
+			//Diagnocat routes
+			patient.POST("/diagnocat/send", handlers.SendToDiagnocat)
+			patient.GET("/diagnocat/analyses", handlers.GetDiagnocatAnalyses)
+			patient.GET("/diagnocat/analyses/:id/refresh", handlers.RefreshDiagnocatAnalysis)
+
 		}
 
 		// Clinic routes
