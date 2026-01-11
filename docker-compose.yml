@@ -1,6 +1,7 @@
 services:
   postgres:
     image: postgres:15-alpine
+    container_name: dental_postgres
     environment:
       POSTGRES_DB: dental_db
       POSTGRES_USER: dental_user
@@ -14,9 +15,12 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+    networks:
+      - dental_network
 
   orthanc:
     image: jodogne/orthanc-plugins:latest
+    container_name: dental_orthanc
     ports:
       - "8042:8042"
       - "4242:4242"
@@ -28,9 +32,16 @@ services:
       - ORTHANC_PASSWORD=orthanc123
     depends_on:
       - postgres
+    networks:
+      - dental_network
 
+  # Production backend (default)
   backend:
-    build: ./backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: dental_backend
+    profiles: ["production"]
     ports:
       - "8080:8080"
     environment:
@@ -43,24 +54,59 @@ services:
       - ORTHANC_URL=http://orthanc:8042
       - ORTHANC_USER=admin
       - ORTHANC_PASS=orthanc123
-      - SEED_DB=true  # Add this to seed on startup
+      - SEED_DB=true
+      - GIN_MODE=release
     depends_on:
       postgres:
         condition: service_healthy
       orthanc:
         condition: service_started
-    volumes:
-      - ./backend:/app
+    networks:
+      - dental_network
+    deploy:
+      resources:
+        limits:
+          memory: 1G  # Limit memory to 1GB
 
-  frontend:
-    build: ./frontend
+  # Development backend with hot-reload
+  backend-dev:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: dental_backend_dev
+    profiles: ["dev"]
     ports:
-      - "3000:80"
-    depends_on:
-      - backend
+      - "8080:8080"
     environment:
-      - REACT_APP_API_URL=http://localhost:8080
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=dental_user
+      - DB_PASSWORD=dental_pass
+      - DB_NAME=dental_db
+      - JWT_SECRET=your-super-secret-jwt-key-change-in-production
+      - ORTHANC_URL=http://orthanc:8042
+      - ORTHANC_USER=admin
+      - ORTHANC_PASS=orthanc123
+      - SEED_DB=true
+      - GIN_MODE=debug
+    volumes:
+      - ./backend:/app  # Mount source code for hot-reload
+    depends_on:
+      postgres:
+        condition: service_healthy
+      orthanc:
+        condition: service_started
+    networks:
+      - dental_network
+    deploy:
+      resources:
+        limits:
+          memory: 1G  # Limit memory to 1GB
 
 volumes:
   postgres_data:
   orthanc_data:
+
+networks:
+  dental_network:
+    driver: bridge

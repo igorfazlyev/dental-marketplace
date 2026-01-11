@@ -9,6 +9,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -27,19 +28,34 @@ type OrthancUploadResponse struct {
 func UploadDICOM(c *gin.Context) {
 	userID := c.GetUint("user_id")
 
+	// Set max file size (500MB)
+	c.Request.Body = http.MaxBytesReader(c.Writer, c.Request.Body, 500*1024*1024)
+
 	file, header, err := c.Request.FormFile("file")
 	if err != nil {
+		if err.Error() == "http: request body too large" {
+			c.JSON(http.StatusRequestEntityTooLarge, gin.H{"error": "File too large. Maximum size is 500MB"})
+			return
+		}
 		c.JSON(http.StatusBadRequest, gin.H{"error": "No file uploaded"})
 		return
 	}
 	defer file.Close()
 
-	// Read file content
-	fileBytes, err := io.ReadAll(file)
+	// Validate file size
+	if header.Size > 500*1024*1024 {
+		c.JSON(http.StatusRequestEntityTooLarge, gin.H{"error": "File too large. Maximum size is 500MB"})
+		return
+	}
+
+	// Read file content in chunks to avoid memory issues
+	buf := new(bytes.Buffer)
+	_, err = io.Copy(buf, file)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to read file"})
 		return
 	}
+	fileBytes := buf.Bytes()
 
 	// Upload to Orthanc
 	req, err := http.NewRequest("POST", orthancURL+"/instances", bytes.NewReader(fileBytes))
@@ -51,7 +67,9 @@ func UploadDICOM(c *gin.Context) {
 	req.SetBasicAuth(orthancUser, orthancPass)
 	req.Header.Set("Content-Type", "application/dicom")
 
-	client := &http.Client{}
+	client := &http.Client{
+		Timeout: 5 * time.Minute, // Increase timeout for large files
+	}
 	resp, err := client.Do(req)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to upload to Orthanc"})
