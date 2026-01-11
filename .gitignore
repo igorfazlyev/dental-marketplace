@@ -1,0 +1,31 @@
+# DICOM files
+*.dcm
+
+# Local test data
+test_data/
+
+# Node / React
+node_modules/
+**/node_modules/
+
+# Vite / build outputs
+dist/
+**/dist/
+
+# Next.js (if you ever use it)
+.next/
+out/
+
+# Common caches
+.vite/
+**/.vite/
+.eslintcache
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Env files (optional, only if you don't want them committed)
+.env
+.env.*

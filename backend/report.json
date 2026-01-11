@@ -1,0 +1,3327 @@
+{
+  "fetched_at": "2026-01-11T19:44:00.22567941Z",
+  "source": "https://app2.diagnocat.ru/partner-api",
+  "report_id": "00000006-963f-7e99-e59b-64a2a0af30f0",
+  "report": {
+    "id": "",
+    "status": "",
+    "complete": true,
+    "pdf_url": "https://app2.diagnocat.ru/partner-api/v2/analyses/00000006-963f-7e99-e59b-64a2a0af30f0/pdf?X-Dc-Client-Key-Id=sk-diagnocat_api_key\u0026X-Dc-Objective=download\u0026X-Dc-Organization-Id=d2hdverg6tg2o69h0odg\u0026X-Dc-Report-Id=d5hvfqcub6r4kagauc7g\u0026X-Dc-Signature=0841041b0425512a30b410be34e781052b4d355c6eab86f2ff39f5618e01c9dc\u0026X-Dc-Timestamp-Unix-Milli=1768160639627\u0026X-Dc-User-Id=d2hdvf3g6tg2o69h0ok0",
+    "webpage_url": "https://app2.diagnocat.ru/patients/d5hsbenbmalkfg9l29c0/reports/d5hvfqcub6r4kagauc7g/gp?X-Dc-Client-Key-Id=sk-diagnocat_api_key\u0026X-Dc-Signature=078f44da244bb73eb0dc80cf70c714ffabe28d4fac77f8e7724eca3f015adccd\u0026X-Dc-Timestamp-Unix-Milli=1768160639627\u0026X-Dc-User-Id=d2hdvf3g6tg2o69h0ok0",
+    "preview_url": "https://storage.yandexcloud.net/diagnocat-main-prod-ru-new/d5hvjkn194u8egdf13a0_report-display-optimized?X-Amz-Algorithm=AWS4-HMAC-SHA256\u0026X-Amz-Checksum-Mode=ENABLED\u0026X-Amz-Credential=YCAJECNYO13ToOf_07LyFEWvW%2F20260111%2Fus-east-1%2Fs3%2Faws4_request\u0026X-Amz-Date=20260111T194359Z\u0026X-Amz-Expires=604800\u0026X-Amz-SignedHeaders=host\u0026response-cache-control=max-age%3D604740%2Cprivate%2Cmust-revalidate%2Cno-transform%2Cimmutable\u0026x-id=GetObject\u0026X-Amz-Signature=ae7fb8a9c62f6dfae93c3e18a332078cf8d6db1eaeb363afc79511c1777a71c8"
+  },
+  "diagnoses": {
+    "diagnoses": [
+      {
+        "tooth_number": 17,
+        "text_comment": "",
+        "attributes": [
+          {
+            "attribute_id": 1000,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1092,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1017,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1007,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1044,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1012,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          }
+        ],
+        "periodontal_status": {
+          "site": [
+            {
+              "site": "mesial-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.0021746
+                }
+              }
+            },
+            {
+              "site": "vestibular",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.4106207
+                }
+              }
+            },
+            {
+              "site": "mesial-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.9480362
+                }
+              }
+            },
+            {
+              "site": "distal-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 3.251111
+                }
+              }
+            },
+            {
+              "site": "distal-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 3.344841
+                }
+              }
+            },
+            {
+              "site": "oral",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 3.4986124
+                }
+              }
+            }
+          ],
+          "roots": [
+            {
+              "root": "Mb",
+              "measurements": {
+                "length": {
+                  "predicted": 15.762536
+                }
+              }
+            },
+            {
+              "root": "P",
+              "measurements": {
+                "length": {
+                  "predicted": 14.924909
+                }
+              }
+            },
+            {
+              "root": "DB",
+              "measurements": {
+                "length": {
+                  "predicted": 14.505606
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooth_number": 26,
+        "text_comment": "",
+        "attributes": [
+          {
+            "attribute_id": 1017,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1012,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1021,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1097,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1101,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1007,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1000,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1092,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          }
+        ],
+        "periodontal_status": {
+          "site": [
+            {
+              "site": "mesial-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.796081
+                }
+              }
+            },
+            {
+              "site": "distal-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.478744
+                }
+              }
+            },
+            {
+              "site": "oral",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.7329469
+                }
+              }
+            },
+            {
+              "site": "mesial-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.6754493
+                }
+              }
+            },
+            {
+              "site": "vestibular",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.2524185
+                }
+              }
+            },
+            {
+              "site": "distal-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.3622968
+                }
+              }
+            }
+          ],
+          "roots": [
+            {
+              "root": "DB",
+              "measurements": {
+                "length": {
+                  "predicted": 11.240654
+                }
+              }
+            },
+            {
+              "root": "Mb",
+              "measurements": {
+                "length": {
+                  "predicted": 15.920443
+                }
+              }
+            },
+            {
+              "root": "P",
+              "measurements": {
+                "length": {
+                  "predicted": 15.515554
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooth_number": 48,
+        "text_comment": "",
+        "attributes": [
+          {
+            "attribute_id": 1000,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1092,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1016,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1011,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          }
+        ],
+        "periodontal_status": {
+          "site": [
+            {
+              "site": "oral",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 0.92933005
+                }
+              }
+            },
+            {
+              "site": "vestibular",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 0.44934937
+                }
+              }
+            },
+            {
+              "site": "distal-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 0.8230943
+                }
+              }
+            },
+            {
+              "site": "mesial-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.2030628
+                }
+              }
+            },
+            {
+              "site": "mesial-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.9863641
+                }
+              }
+            },
+            {
+              "site": "distal-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 0.31405428
+                }
+              }
+            }
+          ],
+          "roots": [
+            {
+              "root": "D",
+              "measurements": {
+                "length": {
+                  "predicted": 12.429988
+                }
+              }
+            },
+            {
+              "root": "M",
+              "measurements": {
+                "length": {
+                  "predicted": 13.063454
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooth_number": 44,
+        "text_comment": "",
+        "attributes": [
+          {
+            "attribute_id": 1014,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1021,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1097,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1101,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1010,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1000,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1092,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          }
+        ],
+        "periodontal_status": {
+          "site": [
+            {
+              "site": "oral",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.0267808
+                }
+              }
+            },
+            {
+              "site": "mesial-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.3379464
+                }
+              }
+            },
+            {
+              "site": "vestibular",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.359474
+                }
+              }
+            },
+            {
+              "site": "distal-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.4664505
+                }
+              }
+            },
+            {
+              "site": "mesial-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.4829311
+                }
+              }
+            },
+            {
+              "site": "distal-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.3387904
+                }
+              }
+            }
+          ],
+          "roots": [
+            {
+              "root": "A1",
+              "measurements": {
+                "length": {
+                  "predicted": 15.247212
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooth_number": 21,
+        "text_comment": "",
+        "attributes": [
+          {
+            "attribute_id": 1000,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1092,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1014,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1010,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          }
+        ],
+        "periodontal_status": {
+          "site": [
+            {
+              "site": "vestibular",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.8736906
+                }
+              }
+            },
+            {
+              "site": "mesial-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.272388
+                }
+              }
+            },
+            {
+              "site": "oral",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.9330244
+                }
+              }
+            },
+            {
+              "site": "distal-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.1169459
+                }
+              }
+            },
+            {
+              "site": "distal-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.0562344
+                }
+              }
+            },
+            {
+              "site": "mesial-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.7389135
+                }
+              }
+            }
+          ],
+          "roots": [
+            {
+              "root": "A1",
+              "measurements": {
+                "length": {
+                  "predicted": 15.577286
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooth_number": 15,
+        "text_comment": "",
+        "attributes": [
+          {
+            "attribute_id": 1010,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1000,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1092,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1015,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          }
+        ],
+        "periodontal_status": {
+          "site": [
+            {
+              "site": "vestibular",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.2743526
+                }
+              }
+            },
+            {
+              "site": "distal-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.8089255
+                }
+              }
+            },
+            {
+              "site": "mesial-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.4840223
+                }
+              }
+            },
+            {
+              "site": "oral",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.8422916
+                }
+              }
+            },
+            {
+              "site": "distal-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.9909247
+                }
+              }
+            },
+            {
+              "site": "mesial-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.0513427
+                }
+              }
+            }
+          ],
+          "roots": [
+            {
+              "root": "A1",
+              "measurements": {
+                "length": {
+                  "predicted": 16.751547
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooth_number": 25,
+        "text_comment": "",
+        "attributes": [
+          {
+            "attribute_id": 1014,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1010,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1000,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1092,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          }
+        ],
+        "periodontal_status": {
+          "site": [
+            {
+              "site": "vestibular",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.9354708
+                }
+              }
+            },
+            {
+              "site": "mesial-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.4642787
+                }
+              }
+            },
+            {
+              "site": "distal-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.6731468
+                }
+              }
+            },
+            {
+              "site": "mesial-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.159139
+                }
+              }
+            },
+            {
+              "site": "distal-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.9733881
+                }
+              }
+            },
+            {
+              "site": "oral",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.1864522
+                }
+              }
+            }
+          ],
+          "roots": [
+            {
+              "root": "A1",
+              "measurements": {
+                "length": {
+                  "predicted": 18.126833
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooth_number": 41,
+        "text_comment": "",
+        "attributes": [
+          {
+            "attribute_id": 1014,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1010,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1000,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1092,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          }
+        ],
+        "periodontal_status": {
+          "site": [
+            {
+              "site": "mesial-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.5198026
+                }
+              }
+            },
+            {
+              "site": "mesial-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.8994126
+                }
+              }
+            },
+            {
+              "site": "oral",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 3.093682
+                }
+              }
+            },
+            {
+              "site": "vestibular",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.2907195
+                }
+              }
+            },
+            {
+              "site": "distal-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 3.033301
+                }
+              }
+            },
+            {
+              "site": "distal-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.7866275
+                }
+              }
+            }
+          ],
+          "roots": [
+            {
+              "root": "A1",
+              "measurements": {
+                "length": {
+                  "predicted": 14.867535
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooth_number": 18,
+        "text_comment": "",
+        "attributes": [
+          {
+            "attribute_id": 1000,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1092,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1016,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1011,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          }
+        ],
+        "periodontal_status": {
+          "site": [
+            {
+              "site": "distal-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.5201849
+                }
+              }
+            },
+            {
+              "site": "mesial-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 0
+                }
+              }
+            },
+            {
+              "site": "distal-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.6021683
+                }
+              }
+            },
+            {
+              "site": "mesial-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 0
+                }
+              }
+            },
+            {
+              "site": "oral",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.8605677
+                }
+              }
+            },
+            {
+              "site": "vestibular",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.3594244
+                }
+              }
+            }
+          ],
+          "roots": [
+            {
+              "root": "A1",
+              "measurements": {
+                "length": {
+                  "predicted": 12.159835
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooth_number": 12,
+        "text_comment": "",
+        "attributes": [
+          {
+            "attribute_id": 1000,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1092,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1014,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1010,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          }
+        ],
+        "periodontal_status": {
+          "site": [
+            {
+              "site": "oral",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.1599959
+                }
+              }
+            },
+            {
+              "site": "distal-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.1526768
+                }
+              }
+            },
+            {
+              "site": "mesial-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.1150748
+                }
+              }
+            },
+            {
+              "site": "vestibular",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.6401553
+                }
+              }
+            },
+            {
+              "site": "distal-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.8276013
+                }
+              }
+            },
+            {
+              "site": "mesial-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.176281
+                }
+              }
+            }
+          ],
+          "roots": [
+            {
+              "root": "A1",
+              "measurements": {
+                "length": {
+                  "predicted": 14.801463
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooth_number": 36,
+        "text_comment": "",
+        "attributes": [
+          {
+            "attribute_id": 1011,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1021,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1101,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1000,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1092,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1016,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1097,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1007,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          }
+        ],
+        "periodontal_status": {
+          "site": [
+            {
+              "site": "mesial-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.6839741
+                }
+              }
+            },
+            {
+              "site": "oral",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.8616939
+                }
+              }
+            },
+            {
+              "site": "mesial-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.725967
+                }
+              }
+            },
+            {
+              "site": "distal-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.837464
+                }
+              }
+            },
+            {
+              "site": "distal-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.4468131
+                }
+              }
+            },
+            {
+              "site": "vestibular",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.7070005
+                }
+              }
+            }
+          ],
+          "roots": [
+            {
+              "root": "D",
+              "measurements": {
+                "length": {
+                  "predicted": 14.832552
+                }
+              }
+            },
+            {
+              "root": "M",
+              "measurements": {
+                "length": {
+                  "predicted": 16.200884
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooth_number": 16,
+        "text_comment": "",
+        "attributes": [
+          {
+            "attribute_id": 1017,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1021,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1097,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1012,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1000,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1101,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1100,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1092,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          }
+        ],
+        "periodontal_status": {
+          "site": [
+            {
+              "site": "mesial-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.1604447
+                }
+              }
+            },
+            {
+              "site": "vestibular",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.2669716
+                }
+              }
+            },
+            {
+              "site": "distal-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 3.6345642
+                }
+              }
+            },
+            {
+              "site": "oral",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 4.630995
+                }
+              }
+            },
+            {
+              "site": "distal-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.3929813
+                }
+              }
+            },
+            {
+              "site": "mesial-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.4881577
+                }
+              }
+            }
+          ],
+          "roots": [
+            {
+              "root": "P",
+              "measurements": {
+                "length": {
+                  "predicted": 15.7284
+                }
+              }
+            },
+            {
+              "root": "DB",
+              "measurements": {
+                "length": {
+                  "predicted": 13.746012
+                }
+              }
+            },
+            {
+              "root": "Mb",
+              "measurements": {
+                "length": {
+                  "predicted": 15.131684
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooth_number": 34,
+        "text_comment": "",
+        "attributes": [
+          {
+            "attribute_id": 1014,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1010,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1000,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1092,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          }
+        ],
+        "periodontal_status": {
+          "site": [
+            {
+              "site": "distal-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.1803155
+                }
+              }
+            },
+            {
+              "site": "mesial-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.310749
+                }
+              }
+            },
+            {
+              "site": "oral",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.3894026
+                }
+              }
+            },
+            {
+              "site": "vestibular",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 3.1086497
+                }
+              }
+            },
+            {
+              "site": "distal-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.9844298
+                }
+              }
+            },
+            {
+              "site": "mesial-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.7421894
+                }
+              }
+            }
+          ],
+          "roots": [
+            {
+              "root": "A1",
+              "measurements": {
+                "length": {
+                  "predicted": 15.366744
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooth_number": 38,
+        "text_comment": "",
+        "attributes": [
+          {
+            "attribute_id": 1000,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1092,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1016,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1011,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          }
+        ],
+        "periodontal_status": {
+          "site": [
+            {
+              "site": "oral",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.4739243
+                }
+              }
+            },
+            {
+              "site": "distal-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.402228
+                }
+              }
+            },
+            {
+              "site": "mesial-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 0
+                }
+              }
+            },
+            {
+              "site": "distal-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.1247296
+                }
+              }
+            },
+            {
+              "site": "vestibular",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.200149
+                }
+              }
+            },
+            {
+              "site": "mesial-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.145761
+                }
+              }
+            }
+          ],
+          "roots": [
+            {
+              "root": "D",
+              "measurements": {
+                "length": {
+                  "predicted": 12.900143
+                }
+              }
+            },
+            {
+              "root": "M",
+              "measurements": {
+                "length": {
+                  "predicted": 13.040375
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooth_number": 14,
+        "text_comment": "",
+        "attributes": [
+          {
+            "attribute_id": 1092,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1015,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1007,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1011,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1000,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          }
+        ],
+        "periodontal_status": {
+          "site": [
+            {
+              "site": "mesial-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.4669138
+                }
+              }
+            },
+            {
+              "site": "distal-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.0296452
+                }
+              }
+            },
+            {
+              "site": "oral",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.9254957
+                }
+              }
+            },
+            {
+              "site": "vestibular",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.345296
+                }
+              }
+            },
+            {
+              "site": "mesial-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.196319
+                }
+              }
+            },
+            {
+              "site": "distal-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.7225964
+                }
+              }
+            }
+          ],
+          "roots": [
+            {
+              "root": "P",
+              "measurements": {
+                "length": {
+                  "predicted": 12.731715
+                }
+              }
+            },
+            {
+              "root": "B",
+              "measurements": {
+                "length": {
+                  "predicted": 13.1389675
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooth_number": 13,
+        "text_comment": "",
+        "attributes": [
+          {
+            "attribute_id": 1014,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1007,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1010,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1000,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1092,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          }
+        ],
+        "periodontal_status": {
+          "site": [
+            {
+              "site": "mesial-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.3702173
+                }
+              }
+            },
+            {
+              "site": "mesial-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.3069863
+                }
+              }
+            },
+            {
+              "site": "vestibular",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.596476
+                }
+              }
+            },
+            {
+              "site": "distal-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.6074064
+                }
+              }
+            },
+            {
+              "site": "distal-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.2372005
+                }
+              }
+            },
+            {
+              "site": "oral",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.100649
+                }
+              }
+            }
+          ],
+          "roots": [
+            {
+              "root": "A1",
+              "measurements": {
+                "length": {
+                  "predicted": 20.890736
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooth_number": 42,
+        "text_comment": "",
+        "attributes": [
+          {
+            "attribute_id": 1010,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1000,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1092,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1054,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1014,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          }
+        ],
+        "periodontal_status": {
+          "site": [
+            {
+              "site": "oral",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 3.6878347
+                }
+              }
+            },
+            {
+              "site": "distal-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 3.0280237
+                }
+              }
+            },
+            {
+              "site": "vestibular",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 3.0350628
+                }
+              }
+            },
+            {
+              "site": "mesial-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 3.9217253
+                }
+              }
+            },
+            {
+              "site": "distal-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 3.566502
+                }
+              }
+            },
+            {
+              "site": "mesial-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 3.8103485
+                }
+              }
+            }
+          ],
+          "roots": [
+            {
+              "root": "A1",
+              "measurements": {
+                "length": {
+                  "predicted": 15.698468
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooth_number": 28,
+        "text_comment": "",
+        "attributes": [
+          {
+            "attribute_id": 1011,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1000,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1092,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1016,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          }
+        ],
+        "periodontal_status": {
+          "site": [
+            {
+              "site": "distal-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 0.48600543
+                }
+              }
+            },
+            {
+              "site": "vestibular",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.4184101
+                }
+              }
+            },
+            {
+              "site": "mesial-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.3474402
+                }
+              }
+            },
+            {
+              "site": "distal-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 0.8043815
+                }
+              }
+            },
+            {
+              "site": "mesial-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.0153345
+                }
+              }
+            },
+            {
+              "site": "oral",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 0
+                }
+              }
+            }
+          ],
+          "roots": [
+            {
+              "root": "A1",
+              "measurements": {
+                "length": {
+                  "predicted": 12.149447
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooth_number": 46,
+        "text_comment": "",
+        "attributes": [
+          {
+            "attribute_id": 1021,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1097,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1099,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1011,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1000,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1092,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1016,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          }
+        ],
+        "periodontal_status": {
+          "site": [
+            {
+              "site": "oral",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.091371
+                }
+              }
+            },
+            {
+              "site": "vestibular",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.2916744
+                }
+              }
+            },
+            {
+              "site": "mesial-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.4828265
+                }
+              }
+            },
+            {
+              "site": "mesial-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.8407909
+                }
+              }
+            },
+            {
+              "site": "distal-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.083097
+                }
+              }
+            },
+            {
+              "site": "distal-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.3292773
+                }
+              }
+            }
+          ],
+          "roots": [
+            {
+              "root": "D",
+              "measurements": {
+                "length": {
+                  "predicted": 16.146893
+                }
+              }
+            },
+            {
+              "root": "M",
+              "measurements": {
+                "length": {
+                  "predicted": 16.35396
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooth_number": 37,
+        "text_comment": "",
+        "attributes": [
+          {
+            "attribute_id": 1000,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1029,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1007,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1011,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1092,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1016,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1024,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1048,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1047,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          }
+        ],
+        "periodontal_status": {
+          "site": [
+            {
+              "site": "distal-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.3367095
+                }
+              }
+            },
+            {
+              "site": "oral",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.8783623
+                }
+              }
+            },
+            {
+              "site": "distal-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.3740475
+                }
+              }
+            },
+            {
+              "site": "mesial-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.6987215
+                }
+              }
+            },
+            {
+              "site": "vestibular",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.4924446
+                }
+              }
+            }
+          ],
+          "roots": [
+            {
+              "root": "M",
+              "measurements": {
+                "length": {
+                  "predicted": 16.44663
+                }
+              }
+            },
+            {
+              "root": "D",
+              "measurements": {
+                "length": {
+                  "predicted": 15.95468
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooth_number": 23,
+        "text_comment": "",
+        "attributes": [
+          {
+            "attribute_id": 1014,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1044,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1010,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1000,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1092,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          }
+        ],
+        "periodontal_status": {
+          "site": [
+            {
+              "site": "vestibular",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.8435078
+                }
+              }
+            },
+            {
+              "site": "distal-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.535908
+                }
+              }
+            },
+            {
+              "site": "distal-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.9337752
+                }
+              }
+            },
+            {
+              "site": "oral",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.1848624
+                }
+              }
+            },
+            {
+              "site": "mesial-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.6004755
+                }
+              }
+            },
+            {
+              "site": "mesial-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.1948702
+                }
+              }
+            }
+          ],
+          "roots": [
+            {
+              "root": "A1",
+              "measurements": {
+                "length": {
+                  "predicted": 19.536562
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooth_number": 47,
+        "text_comment": "",
+        "attributes": [
+          {
+            "attribute_id": 1016,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1021,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1097,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1099,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1011,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1000,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1092,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          }
+        ],
+        "periodontal_status": {
+          "site": [
+            {
+              "site": "oral",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.8263552
+                }
+              }
+            },
+            {
+              "site": "vestibular",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.20627
+                }
+              }
+            },
+            {
+              "site": "mesial-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.8496264
+                }
+              }
+            },
+            {
+              "site": "mesial-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.9041338
+                }
+              }
+            },
+            {
+              "site": "distal-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.8829188
+                }
+              }
+            },
+            {
+              "site": "distal-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.0637615
+                }
+              }
+            }
+          ],
+          "roots": [
+            {
+              "root": "D",
+              "measurements": {
+                "length": {
+                  "predicted": 15.72582
+                }
+              }
+            },
+            {
+              "root": "M",
+              "measurements": {
+                "length": {
+                  "predicted": 15.453171
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooth_number": 43,
+        "text_comment": "",
+        "attributes": [
+          {
+            "attribute_id": 1014,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1010,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1000,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1092,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          }
+        ],
+        "periodontal_status": {
+          "site": [
+            {
+              "site": "oral",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 3.1797726
+                }
+              }
+            },
+            {
+              "site": "mesial-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.866214
+                }
+              }
+            },
+            {
+              "site": "distal-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.3047118
+                }
+              }
+            },
+            {
+              "site": "vestibular",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.560691
+                }
+              }
+            },
+            {
+              "site": "distal-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.680042
+                }
+              }
+            },
+            {
+              "site": "mesial-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 3.065481
+                }
+              }
+            }
+          ],
+          "roots": [
+            {
+              "root": "A1",
+              "measurements": {
+                "length": {
+                  "predicted": 18.580622
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooth_number": 35,
+        "text_comment": "",
+        "attributes": [
+          {
+            "attribute_id": 1021,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1097,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1101,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1010,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1000,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1092,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1014,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          }
+        ],
+        "periodontal_status": {
+          "site": [
+            {
+              "site": "distal-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.5926639
+                }
+              }
+            },
+            {
+              "site": "mesial-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.7942289
+                }
+              }
+            },
+            {
+              "site": "distal-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.4556663
+                }
+              }
+            },
+            {
+              "site": "oral",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.9373502
+                }
+              }
+            },
+            {
+              "site": "vestibular",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.1204245
+                }
+              }
+            },
+            {
+              "site": "mesial-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.6723028
+                }
+              }
+            }
+          ],
+          "roots": [
+            {
+              "root": "A1",
+              "measurements": {
+                "length": {
+                  "predicted": 16.026318
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooth_number": 24,
+        "text_comment": "",
+        "attributes": [
+          {
+            "attribute_id": 1007,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1011,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1000,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1092,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1015,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          }
+        ],
+        "periodontal_status": {
+          "site": [
+            {
+              "site": "vestibular",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.1104145
+                }
+              }
+            },
+            {
+              "site": "oral",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.8202083
+                }
+              }
+            },
+            {
+              "site": "distal-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.0745318
+                }
+              }
+            },
+            {
+              "site": "mesial-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.307384
+                }
+              }
+            },
+            {
+              "site": "mesial-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.2449527
+                }
+              }
+            },
+            {
+              "site": "distal-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.618967
+                }
+              }
+            }
+          ],
+          "roots": [
+            {
+              "root": "B",
+              "measurements": {
+                "length": {
+                  "predicted": 14.414592
+                }
+              }
+            },
+            {
+              "root": "P",
+              "measurements": {
+                "length": {
+                  "predicted": 14.131697
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooth_number": 31,
+        "text_comment": "",
+        "attributes": [
+          {
+            "attribute_id": 1014,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1010,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1000,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1092,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          }
+        ],
+        "periodontal_status": {
+          "site": [
+            {
+              "site": "vestibular",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.5446749
+                }
+              }
+            },
+            {
+              "site": "oral",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 3.2487128
+                }
+              }
+            },
+            {
+              "site": "mesial-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.5102077
+                }
+              }
+            },
+            {
+              "site": "distal-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 3.0455682
+                }
+              }
+            },
+            {
+              "site": "mesial-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 3.1747496
+                }
+              }
+            },
+            {
+              "site": "distal-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.7186337
+                }
+              }
+            }
+          ],
+          "roots": [
+            {
+              "root": "A1",
+              "measurements": {
+                "length": {
+                  "predicted": 13.770571
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooth_number": 45,
+        "text_comment": "",
+        "attributes": [
+          {
+            "attribute_id": 1092,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1014,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1010,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1000,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          }
+        ],
+        "periodontal_status": {
+          "site": [
+            {
+              "site": "mesial-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.5671421
+                }
+              }
+            },
+            {
+              "site": "vestibular",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.9253234
+                }
+              }
+            },
+            {
+              "site": "oral",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.122795
+                }
+              }
+            },
+            {
+              "site": "distal-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.0784857
+                }
+              }
+            },
+            {
+              "site": "distal-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.2289646
+                }
+              }
+            },
+            {
+              "site": "mesial-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.001946
+                }
+              }
+            }
+          ],
+          "roots": [
+            {
+              "root": "A1",
+              "measurements": {
+                "length": {
+                  "predicted": 16.797249
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooth_number": 22,
+        "text_comment": "",
+        "attributes": [
+          {
+            "attribute_id": 1007,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1010,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1000,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1092,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1014,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          }
+        ],
+        "periodontal_status": {
+          "site": [
+            {
+              "site": "mesial-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.2821883
+                }
+              }
+            },
+            {
+              "site": "vestibular",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.8690271
+                }
+              }
+            },
+            {
+              "site": "distal-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.8994869
+                }
+              }
+            },
+            {
+              "site": "distal-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 0.76668936
+                }
+              }
+            },
+            {
+              "site": "mesial-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.2407026
+                }
+              }
+            },
+            {
+              "site": "oral",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.7229686
+                }
+              }
+            }
+          ],
+          "roots": [
+            {
+              "root": "A1",
+              "measurements": {
+                "length": {
+                  "predicted": 14.935836
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooth_number": 33,
+        "text_comment": "",
+        "attributes": [
+          {
+            "attribute_id": 1092,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1014,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1010,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1000,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          }
+        ],
+        "periodontal_status": {
+          "site": [
+            {
+              "site": "distal-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.3723752
+                }
+              }
+            },
+            {
+              "site": "oral",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.6304655
+                }
+              }
+            },
+            {
+              "site": "vestibular",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.3811955
+                }
+              }
+            },
+            {
+              "site": "mesial-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.5611613
+                }
+              }
+            },
+            {
+              "site": "mesial-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.586071
+                }
+              }
+            },
+            {
+              "site": "distal-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.3160694
+                }
+              }
+            }
+          ],
+          "roots": [
+            {
+              "root": "A1",
+              "measurements": {
+                "length": {
+                  "predicted": 18.5446
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooth_number": 32,
+        "text_comment": "",
+        "attributes": [
+          {
+            "attribute_id": 1092,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1014,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1010,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1000,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          }
+        ],
+        "periodontal_status": {
+          "site": [
+            {
+              "site": "oral",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.97661
+                }
+              }
+            },
+            {
+              "site": "mesial-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.8880475
+                }
+              }
+            },
+            {
+              "site": "mesial-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.8246784
+                }
+              }
+            },
+            {
+              "site": "distal-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.219634
+                }
+              }
+            },
+            {
+              "site": "distal-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.9207518
+                }
+              }
+            },
+            {
+              "site": "vestibular",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.856772
+                }
+              }
+            }
+          ],
+          "roots": [
+            {
+              "root": "A1",
+              "measurements": {
+                "length": {
+                  "predicted": 15.017621
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooth_number": 27,
+        "text_comment": "",
+        "attributes": [
+          {
+            "attribute_id": 1021,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1097,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1099,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1012,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1000,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1092,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1017,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          }
+        ],
+        "periodontal_status": {
+          "site": [
+            {
+              "site": "vestibular",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.9444286
+                }
+              }
+            },
+            {
+              "site": "mesial-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 3.503123
+                }
+              }
+            },
+            {
+              "site": "oral",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.4219269
+                }
+              }
+            },
+            {
+              "site": "distal-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.2082516
+                }
+              }
+            },
+            {
+              "site": "mesial-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 3.1467378
+                }
+              }
+            },
+            {
+              "site": "distal-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.6987671
+                }
+              }
+            }
+          ],
+          "roots": [
+            {
+              "root": "Mb",
+              "measurements": {
+                "length": {
+                  "predicted": 14.861451
+                }
+              }
+            },
+            {
+              "root": "P",
+              "measurements": {
+                "length": {
+                  "predicted": 13.653691
+                }
+              }
+            },
+            {
+              "root": "DB",
+              "measurements": {
+                "length": {
+                  "predicted": 13.645201
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooth_number": 11,
+        "text_comment": "",
+        "attributes": [
+          {
+            "attribute_id": 1014,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1044,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1010,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1000,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          },
+          {
+            "attribute_id": 1092,
+            "model_positive": true,
+            "user_positive": false,
+            "user_decision": null
+          }
+        ],
+        "periodontal_status": {
+          "site": [
+            {
+              "site": "mesial-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.4629809
+                }
+              }
+            },
+            {
+              "site": "distal-buccal",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.092353
+                }
+              }
+            },
+            {
+              "site": "oral",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.6581496
+                }
+              }
+            },
+            {
+              "site": "vestibular",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 2.3892677
+                }
+              }
+            },
+            {
+              "site": "distal-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.2801154
+                }
+              }
+            },
+            {
+              "site": "mesial-lingual",
+              "measurements": {
+                "boneLoss": {
+                  "predicted": 1.677069
+                }
+              }
+            }
+          ],
+          "roots": [
+            {
+              "root": "A1",
+              "measurements": {
+                "length": {
+                  "predicted": 16.190454
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
