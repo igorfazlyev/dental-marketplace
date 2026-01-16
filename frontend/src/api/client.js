@@ -4,23 +4,25 @@ const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
 
 const apiClient = axios.create({
   baseURL: API_URL,
-  headers: {
-    "Content-Type": "application/json",
-  },
+  // ❗ Don't force Content-Type globally.
+  // JSON requests will set it automatically; FormData must not be overridden.
 });
 
 // Add token to requests
 apiClient.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
+
+    // Ensure headers exists (axios sometimes uses undefined)
+    config.headers = config.headers || {};
+
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
+
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );
 
 // Handle 401 errors
@@ -39,37 +41,45 @@ apiClient.interceptors.response.use(
 // Auth API
 export const authAPI = {
   login: (email, password) => apiClient.post("/api/login", { email, password }),
-
   register: (userData) => apiClient.post("/api/register", userData),
-
   getMe: () => apiClient.get("/api/me"),
 };
 
 // Patient API
 export const patientAPI = {
-  // UPDATED: Now accepts FormData with destination parameter
-  uploadDICOM: (formData, onUploadProgress) =>
-    apiClient.post("/api/patient/upload", formData, {
-      headers: { "Content-Type": "multipart/form-data" },
+  /**
+   * Upload DICOM file.
+   * Expects FormData with:
+   *  - file: File
+   *  - destination: "diagnocat" | "orthanc"
+   *
+   * onProgress(percentInt) is optional.
+   */
+  uploadDICOM: (formData, onProgress) => {
+    return apiClient.post("/api/patient/upload", formData, {
+      // ✅ IMPORTANT: do NOT set Content-Type manually for FormData.
+      // The browser will set proper multipart boundary.
       onUploadProgress: (progressEvent) => {
-        const progress = Math.round(
-          (progressEvent.loaded * 100) / progressEvent.total
-        );
-        onUploadProgress(progress);
+        if (!onProgress) return;
+
+        const total = progressEvent.total ?? 0;
+        if (!total) return;
+
+        const percent = Math.round((progressEvent.loaded * 100) / total);
+        onProgress(percent);
       },
-    }),
+    });
+  },
 
   getStudies: () => apiClient.get("/api/patient/studies"),
 };
 
 export const diagnocatAPI = {
-  sendStudy: (studyId) =>
-    apiClient.post("/api/patient/diagnocat/send", { study_id: studyId }),
-
   getAnalyses: () => apiClient.get("/api/patient/diagnocat/analyses"),
-
   refreshAnalysis: (analysisId) =>
     apiClient.get(`/api/patient/diagnocat/analyses/${analysisId}/refresh`),
+  sendStudy: (studyId) =>
+    apiClient.post("/api/patient/diagnocat/send", { study_id: studyId }),
 };
 
 export default apiClient;

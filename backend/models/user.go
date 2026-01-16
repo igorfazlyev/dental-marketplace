@@ -16,13 +16,15 @@ const (
 )
 
 type User struct {
-	ID        uint           `gorm:"primaryKey" json:"id"`
-	Email     string         `gorm:"uniqueIndex;not null" json:"email"`
-	Password  string         `gorm:"not null" json:"-"`
-	Role      UserRole       `gorm:"type:varchar(20);not null" json:"role"`
-	FirstName string         `json:"first_name"`
-	LastName  string         `json:"last_name"`
-	Phone     string         `json:"phone"`
+	ID                  uint     `gorm:"primaryKey" json:"id"`
+	Email               string   `gorm:"uniqueIndex;not null" json:"email"`
+	Password            string   `gorm:"not null" json:"-"`
+	Role                UserRole `gorm:"type:varchar(20);not null" json:"role"`
+	FirstName           string   `json:"first_name"`
+	LastName            string   `json:"last_name"`
+	Phone               string   `json:"phone"`
+	DiagnocatPatientUID string   `gorm:"index" json:"diagnocat_patient_uid,omitempty"`
+
 	CreatedAt time.Time      `json:"created_at"`
 	UpdatedAt time.Time      `json:"updated_at"`
 	DeletedAt gorm.DeletedAt `gorm:"index" json:"-"`
